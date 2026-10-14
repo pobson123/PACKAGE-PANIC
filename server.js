@@ -1,0 +1,3 @@
+const http = require('http'), fs = require('fs'), path = require('path');
+const types={'.html':'text/html','.js':'text/javascript','.css':'text/css','.json':'application/json'};
+http.createServer((req,res)=>{let file=path.join(__dirname,req.url==='/'?'index.html':decodeURIComponent(req.url)); if(!file.startsWith(__dirname)){res.writeHead(403);return res.end('Nope');} fs.readFile(file,(e,data)=>{if(e){res.writeHead(404);return res.end('Missing');} res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream'});res.end(data);});}).listen(process.env.PORT||4173,()=>console.log('PACKAGE PANIC! running at http://localhost:'+(process.env.PORT||4173)));

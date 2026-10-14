@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PACKAGE PANIC!</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="gameShell">
+    <canvas id="game" aria-label="Package Panic game area"></canvas>
+    <div id="hud" class="hidden">
+      <div class="hudRow"><div><b>SCORE</b> <span id="score">0</span> <small id="best">BEST 0</small></div><div><b>SHIFT</b> <span id="stage">1</span> · <span id="clock">1:20</span></div><div><b>COINS</b> <span id="coins">0</span> ◉</div></div>
+      <div class="meter"><span id="objective">DELIVER 8 PARCELS</span><div><i id="progress"></i></div></div>
+      <div class="hudBottom"><span id="status">WASD to move · Mouse to aim · E to grab</span><span id="carrying">EMPTY HANDS</span></div>
+    </div>
+    <section id="titleScreen" class="screen active">
+      <div class="logo"><span>PACKAGE</span><strong>PANIC!</strong></div>
+      <p class="tagline">THE LEAST RELAXING JOB IN LOGISTICS</p>
+      <div class="panel startPanel"><p id="stageBlurb">SHIFT 1 — TRAINING DAY</p><button id="startBtn" class="primary">START SHIFT</button><button id="shopBtn">UPGRADE BREAK ROOM</button><button id="settingsBtn">SETTINGS</button><p class="controls">WASD <b>move</b> · MOUSE <b>aim</b> · E <b>grab / drop</b><br>CLICK <b>throw</b> · SHIFT <b>sprint</b> · ESC <b>pause</b></p></div>
+      <p class="tip">Tip: golden parcels are worth a ridiculous amount. Find the tiny rubber duck!</p>
+    </section>
+    <section id="pauseScreen" class="screen"><div class="panel"><h2>SHIFT PAUSED</h2><p>The parcels are enjoying a suspiciously calm moment.</p><button id="resumeBtn" class="primary">RESUME</button><button id="restartBtn">RESTART SHIFT</button><button id="quitBtn">END SHIFT</button></div></section>
+    <section id="settingsScreen" class="screen"><div class="panel"><h2>SETTINGS</h2><label>Master volume <input id="volume" type="range" min="0" max="100" value="65"></label><label class="check"><input id="mute" type="checkbox"> Mute everything</label><button id="closeSettings">DONE</button></div></section>
+    <section id="shopScreen" class="screen"><div class="panel shop"><h2>UPGRADE BREAK ROOM</h2><p>Spend coins between shifts. Upgrades persist.</p><div id="upgradeList"></div><button id="closeShop">BACK TO LOADING DOCK</button></div></section>
+    <section id="resultScreen" class="screen"><div class="panel"><h2 id="resultTitle">SHIFT COMPLETE!</h2><p id="resultText"></p><div id="resultStats" class="stats"></div><button id="nextBtn" class="primary">NEXT SHIFT</button><button id="resultShopBtn">VISIT BREAK ROOM</button><button id="homeBtn">LOADING DOCK</button></div></section>
+    <div id="toast"></div>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
